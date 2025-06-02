@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #5f6FFF;
+  --color-primary: #6A0DAD;
   --grid-auto: repeat(auto-fill, minmax(200px, 1fr));
 }
 

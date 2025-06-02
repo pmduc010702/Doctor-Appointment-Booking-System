@@ -1,32 +1,52 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 
-const contact = () => {
+const Contact = () => {
   return (
-    <div>
+    <div className="px-6 md:px-10 lg:px-20">
 
-      <div className='text-center text-2xl pt-10 text-gray-500'>
-        <p>CONTACT <span className='text-gray-700 font-semibold'>US</span></p>
+      {/* Title */}
+      <div className="text-center text-3xl font-semibold pt-16 text-gray-800">
+        <p>CONTACT <span className="text-primary">US</span></p>
       </div>
 
-      <div className='my-10 flex flex-col justify-center md:flex-row gap-10 mb-28 text-sm'>
+      {/* Content */}
+      <div className="my-12 flex flex-col md:flex-row gap-12 items-center">
 
-        <img className='w-full md:max-w-[360px]' src={assets.contact_image}></img>
+        {/* Image */}
+        <img
+          className="w-full md:max-w-md rounded-lg shadow-md"
+          src={assets.contact_image}
+          alt="Contact Us"
+        />
 
-        <div className='flex flex-col justify-center items-start gap-6'>
-          <p className='font-semibold text-lg text-gray-600'>OUR OFFICE</p>
-          <p className='text-gray-500'>Hosur Road / Marigowda Road, (Lakkasandra, Wilson Garden)<br></br> Bangalore – 560029 Karnataka, India.</p>
-          <p className='text-gray-500'>Tel: 080 26995530<br></br> Email: dirstaff@nimhans.ac.in</p>
-          <p className='font-semibold text-lg text-gray-600'>CAREERS AT NIMHANS</p>
-          <p className='text-gray-500'>Learn more about us.</p>
+        {/* Info */}
+        <div className="flex flex-col justify-center items-start gap-6 text-gray-600 text-sm md:w-2/3 leading-relaxed">
+          <div>
+            <p className="font-semibold text-lg text-gray-700 mb-2">OUR OFFICE</p>
+            <p>
+              Hosur Road / Marigowda Road, (Lakkasandra, Wilson Garden)<br />
+              Bangalore – 560029 Karnataka, India.
+            </p>
+            <p className="mt-3">
+              Tel: <a href="tel:+918026995530" className="underline hover:text-primary">080 26995530</a><br />
+              Email: <a href="mailto:dirstaff@nimhans.ac.in" className="underline hover:text-primary">dirstaff@nimhans.ac.in</a>
+            </p>
+          </div>
 
-          <button className='border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500'>Explore More</button>
+          <div>
+            <p className="font-semibold text-lg text-gray-700 mb-2">CAREERS AT NIMHANS</p>
+            <p>Learn more about us.</p>
+          </div>
+
+          <button className="border border-black px-8 py-3 text-sm rounded-md hover:bg-black hover:text-white transition-all duration-300">
+            Explore More
+          </button>
         </div>
-
       </div>
 
     </div>
   )
 }
 
-export default contact
+export default Contact

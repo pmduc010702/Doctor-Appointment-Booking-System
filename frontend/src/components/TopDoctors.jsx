@@ -1,39 +1,62 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-
+import { assets } from '../assets/assets'
 
 
 const TopDoctors = () => {
-
     const navigate = useNavigate()
     const { doctors } = useContext(AppContext)
 
-
     return (
-        <div className='flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10'>
-            <h1 className='text-3xl font-medium'>Top Doctors to Book</h1>
-            <p className='sm:w-1/3 text-center text-sm'>
-                Simply browse through our extensive list of trusted doctors.
+        <div className="flex flex-col items-center gap-6 my-20 text-gray-900 px-4 md:px-10 lg:px-20">
+            {/* Title */}
+            <h2 className="text-3xl md:text-4xl font-semibold text-center">
+                Top Doctors to Book
+            </h2>
+            <p className="text-center text-gray-600 max-w-xl text-sm">
+                Simply browse through our extensive list of trusted doctors and book your appointment with ease.
             </p>
-            <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-5 gap-y-6 px-3 sm:px-0'>
-                {
-                    doctors.slice(0, 10).map((item, index) => (
-                        <div onClick={() => { navigate(`/appointment/${item._id}`); scrollTo(0, 0) }} className='border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500' key={index}>
-                            <img className='bg-blue-50' src={item.image} alt={item.name} />
-                            <div className='p-4'>
-                                <div className={`flex items-center gap-2 text-sm text-center ${item.available ? 'text-green-500' : 'text-gray-500'}`}>
-                                    <p className={`w-2 h-2 ${item.available ? 'bg-green-500' : 'bg-gray-500'} rounded-full`}></p>
-                                    <p>{item.available ? 'Available' : 'Not Available'}</p>
-                                </div>
-                                <p className='text-gray-900 text-lg font-medium'>{item.name}</p>
-                                <p className='text-gray-600 text-sm'>{item.speciality}</p>
+
+            {/* Doctors List */}
+            <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6">
+                {doctors.slice(0, 8).map((item, index) => (
+                    <div
+                        key={index}
+                        onClick={() => {
+                            navigate(`/appointment/${item._id}`)
+                            scrollTo(0, 0)
+                        }}
+                        className="group bg-white shadow hover:shadow-lg border border-gray-200 rounded-2xl overflow-hidden cursor-pointer transition-transform duration-300 hover:-translate-y-2"
+                    >
+                        <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-56 object-cover bg-blue-50"
+                        />
+                        <div className="p-4 flex flex-col gap-1">
+                            <div className={`flex items-center gap-2 text-sm ${item.available ? 'text-green-500' : 'text-gray-500'}`}>
+                                <span className={`w-2 h-2 rounded-full ${item.available ? 'bg-green-500' : 'bg-gray-400'}`}></span>
+                                <span>{item.available ? 'Available' : 'Not Available'}</span>
                             </div>
+                            <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
+                            <p className="text-sm text-gray-600">{item.speciality}</p>
                         </div>
-                    ))
-                }
+                    </div>
+                ))}
             </div>
-            <button onClick={() => { navigate('doctors'); scrollTo(0, 0) }} className='bg-blue-50 text-gray-600 px-12 py-3 rounded-full mt-10'>More</button>
+
+            {/* More Button */}
+            <button
+                onClick={() => {
+                    navigate('/doctors')
+                    scrollTo(0, 0)
+                }}
+                className="mt-10 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-12 py-3 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
+            >
+                View More Doctors
+            </button>
+
         </div>
     )
 }

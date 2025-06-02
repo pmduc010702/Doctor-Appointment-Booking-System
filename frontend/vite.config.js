@@ -5,3 +5,4 @@ import tailwindcss from '@tailwindcss/vite' // Import Tailwind CSS Plugin
 export default defineConfig({
   plugins: [react(), tailwindcss()], // Sử dụng plugin Tailwind CSS
 })
+
