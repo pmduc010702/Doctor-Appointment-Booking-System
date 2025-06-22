@@ -94,5 +94,21 @@ const loginAdmin = async (req, res) => {
     }
 }
 
+//API to get all doctors list for admin panel
+const allDoctors = async (req, res) => {
+    try {
+        // Tìm tất cả các bác sĩ trong collection 'doctor'
+        // .select('-password') có nghĩa là loại bỏ field 'password' khỏi kết quả trả về
+        const doctors = await doctorModel.find({}).select('-password')
 
-export { addDoctor, loginAdmin }
+        // Trả về kết quả thành công dưới dạng JSON
+        res.json({ success: true, doctors })
+
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+
+export { addDoctor, loginAdmin, allDoctors }

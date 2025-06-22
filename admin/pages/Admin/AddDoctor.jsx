@@ -60,6 +60,7 @@ const AddDoctor = () => {
         setDegree('')
         setAbout('')
         setFees('')
+        setExperience('')
       } else {
         toast.error(data.message)
       }
