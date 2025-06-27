@@ -3,6 +3,9 @@ import bcrypt from 'bcrypt'
 import userModel from '../models/userModel.js'
 import jwt from 'jsonwebtoken'
 import { v2 as cloudinary } from 'cloudinary'
+import doctorModel from '../models/doctorModel.js'
+import appointmentModel from '../models/appointmentModel.js'
+
 
 
 
@@ -137,6 +140,52 @@ const updateProfile = async (req, res) => {
     }
 }
 
+//API to book appointment
+const bookAppointment = async (req, res) => {
+    try {
+        const userId = req.user.id; // lấy từ token qua middleware
+
+        const { docId, slotDate, slotTime } = req.body;
+
+        const docData = await doctorModel.findById(docId).select('-password');
+        if (!docData) return res.json({ success: false, message: 'Doctor not found' });
+
+        const userData = await userModel.findById(userId).select('-password');
+        if (!userData) return res.json({ success: false, message: 'User not found' });
+
+        // Kiểm tra slot đã bị đặt chưa
+        let slots_booked = docData.slots_booked || {};
+        if (!slots_booked[slotDate]) slots_booked[slotDate] = [];
+
+        if (slots_booked[slotDate].includes(slotTime)) {
+            return res.json({ success: false, message: 'Slot not Available' });
+        }
+
+        slots_booked[slotDate].push(slotTime);
+
+        const appointmentData = {
+            userId,
+            docId,
+            userData,
+            docData,
+            amount: docData.fees,
+            slotDate,
+            slotTime,
+            date: Date.now(),
+        };
+
+        const newAppointment = new appointmentModel(appointmentData);
+        await newAppointment.save();
+
+        await doctorModel.findByIdAndUpdate(docId, { slots_booked });
+
+        return res.json({ success: true, message: 'Appointment Booked' });
+    } catch (error) {
+        console.log(error);
+        return res.json({ success: false, message: error.message });
+    }
+};
+  
 
 
-export { registerUser, loginUser, getProfile, updateProfile }
+export { registerUser, loginUser, getProfile, updateProfile, bookAppointment }
