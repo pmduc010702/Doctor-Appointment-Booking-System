@@ -66,8 +66,8 @@ const loginUser = async (req, res) => {
     try {
 
         const { email, password } = req.body
-        const user = await userModel.findOne({ email }) 
-        
+        const user = await userModel.findOne({ email })
+
         // const user = await userModel.findOne({
         //     $or: [{ email: email }, { phone: email }]
         // })
@@ -190,7 +190,7 @@ const bookAppointment = async (req, res) => {
 
 const listAppointment = async (req, res) => {
     try {
-        const userId = req.user.id; 
+        const userId = req.user.id;
         const appointments = await appointmentModel.find({ userId })
 
         res.json({ success: true, appointments })
@@ -200,5 +200,39 @@ const listAppointment = async (req, res) => {
     }
 }
 
+//API to cancel appointment
 
-export { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointment }
+const cancelAppointment = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const { appointmentId } = req.body
+
+        const appointmentData = await appointmentModel.findById(appointmentId)
+
+        //verify appointment user 
+        if (appointmentData.userId !== userId) {
+            return res.json({ success: false, message: 'Unauthorized action' })
+        }
+
+        await appointmentModel.findByIdAndUpdate(appointmentId, { cancelled: true })
+
+        //releasing doctor slot
+        const { docId, slotDate, slotTime } = appointmentData
+
+        const doctorData = await doctorModel.findById(docId)
+
+        let slots_booked = doctorData.slots_booked
+
+        slots_booked[slotDate] = slots_booked[slotDate].filter(e => e !== slotTime)
+
+        await doctorModel.findByIdAndUpdate(docId, { slots_booked })
+
+        res.json({ success: true, message: 'Appointment Cancelled' })
+
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
+}
+
+export { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointment, cancelAppointment }
