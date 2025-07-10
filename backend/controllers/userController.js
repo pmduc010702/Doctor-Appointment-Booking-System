@@ -235,4 +235,28 @@ const cancelAppointment = async (req, res) => {
     }
 }
 
+export const confirmPayment = async (req, res) => {
+    const { appointmentId } = req.body;
+
+    try {
+        if (!appointmentId) {
+            return res.status(400).json({ success: false, message: 'Appointment ID is required' });
+        }
+
+        const updated = await appointmentModel.findByIdAndUpdate(
+            appointmentId,
+            { payment: true },
+            { new: true }
+        );
+
+        if (!updated) {
+            return res.status(404).json({ success: false, message: 'Appointment not found' });
+        }
+
+        res.json({ success: true, message: 'Payment confirmed successfully', appointment: updated });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ success: false, message: 'Server error while confirming payment' });
+    }
+  };
 export { registerUser, loginUser, getProfile, updateProfile, bookAppointment, listAppointment, cancelAppointment }
