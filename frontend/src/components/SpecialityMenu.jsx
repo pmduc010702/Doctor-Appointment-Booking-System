@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom'
 const SpecialityMenu = () => {
     return (
         <div
-            className="flex flex-col items-center gap-6 py-16 text-gray-800 bg-[#f9fafb]"
+            className="flex flex-col items-center gap-6 py-16 text-gray-800"
             id="speciality"
         >
             {/* Title */}
             <h2 className="text-3xl md:text-4xl font-semibold text-center">
-                Find by Speciality
+                Explore Medical Specialties
             </h2>
 
             {/* Subtitle */}
             <p className="text-sm text-gray-600 text-center max-w-xl">
-                Browse through our list of specialities and find the right doctor to book your appointment with ease.
+                Choose from a wide range of specialties to find the most suitable doctor for your health needs.
             </p>
 
             {/* Scrollable Icons */}

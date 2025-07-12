@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 
-
 const TopDoctors = () => {
     const navigate = useNavigate()
     const { doctors } = useContext(AppContext)
@@ -12,10 +11,10 @@ const TopDoctors = () => {
         <div className="flex flex-col items-center gap-6 my-20 text-gray-900 px-4 md:px-10 lg:px-20">
             {/* Title */}
             <h2 className="text-3xl md:text-4xl font-semibold text-center">
-                Top Doctors to Book
+                Featured Doctors
             </h2>
             <p className="text-center text-gray-600 max-w-xl text-sm">
-                Simply browse through our extensive list of trusted doctors and book your appointment with ease.
+                Discover top-rated and highly trusted doctors. Book your appointment quickly and easily.
             </p>
 
             {/* Doctors List */}
@@ -37,7 +36,7 @@ const TopDoctors = () => {
                         <div className="p-4 flex flex-col gap-1">
                             <div className={`flex items-center gap-2 text-sm ${item.available ? 'text-green-500' : 'text-gray-500'}`}>
                                 <span className={`w-2 h-2 rounded-full ${item.available ? 'bg-green-500' : 'bg-gray-400'}`}></span>
-                                <span>{item.available ? 'Available' : 'Not Available'}</span>
+                                <span>{item.available ? 'Available Now' : 'Currently Unavailable'}</span>
                             </div>
                             <h3 className="text-lg font-semibold text-gray-900">{item.name}</h3>
                             <p className="text-sm text-gray-600">{item.speciality}</p>
@@ -54,9 +53,8 @@ const TopDoctors = () => {
                 }}
                 className="mt-10 inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-semibold px-12 py-3 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50"
             >
-                View More Doctors
+                View All Doctors
             </button>
-
         </div>
     )
 }

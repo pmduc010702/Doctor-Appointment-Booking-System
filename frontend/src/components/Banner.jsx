@@ -10,8 +10,8 @@ const Banner = () => {
             {/* Left Side */}
             <div className="flex-1 text-center md:text-left mb-6 md:mb-0">
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-white leading-snug">
-                    Book Appointment<br />
-                    <span className="mt-2 block">With 100+ Trusted Doctors</span>
+                    Your Health, <br />
+                    <span className="mt-2 block">Our Trusted Doctors Are Here</span>
                 </h2>
                 <button
                     onClick={() => {
@@ -20,7 +20,7 @@ const Banner = () => {
                     }}
                     className="bg-white text-primary font-medium text-sm sm:text-base px-8 py-3 rounded-full mt-6 hover:bg-gray-100 transition-all duration-300"
                 >
-                    Create Account
+                    Get Started
                 </button>
             </div>
 

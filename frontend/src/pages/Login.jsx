@@ -18,7 +18,6 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
 
-  // For hover/active styles on button
   const [isHover, setIsHover] = useState(false)
   const [isActive, setIsActive] = useState(false)
 

@@ -9,7 +9,7 @@ const Success = () => {
     const navigate = useNavigate();
     const { token } = useContext(AppContext);
 
-    const backendUrl = import.meta.env.VITE_BACKEND_URL; // Lấy từ biến môi trường
+    const backendUrl = import.meta.env.VITE_BACKEND_URL; 
 
     useEffect(() => {
         const updatePaymentStatus = async () => {

@@ -8,14 +8,14 @@ const Header = () => {
             {/* Left Side */}
             <div className="md:w-1/2 flex flex-col items-start justify-center gap-6 text-white">
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-snug">
-                    Book Appointment <br /> With Trusted Doctors
+                    Your Health, <br /> Our Priority
                 </h1>
 
                 <div className="flex items-center gap-4">
-                    <img className="w-24 sm:w-32" src={assets.group_profiles} alt="Group Profiles" />
+                    <img className="w-24 sm:w-32" src={assets.group_profiles} alt="Trusted Doctors" />
                     <p className="text-sm sm:text-base font-light">
-                        Simply browse our extensive list of trusted <br className="hidden sm:block" />
-                        doctors and schedule your appointment hassle-free.
+                        Connect with certified, experienced doctors <br className="hidden sm:block" />
+                        and book your appointments in just a few clicks.
                     </p>
                 </div>
 
@@ -23,7 +23,7 @@ const Header = () => {
                     href="#speciality"
                     className="mt-4 inline-flex items-center gap-2 bg-white text-primary px-6 py-3 rounded-full text-sm font-semibold shadow-md hover:scale-105 transition-transform duration-300"
                 >
-                    Book Appointment
+                    Get Started
                     <img className="w-4" src={assets.arrow_icon} alt="Arrow" />
                 </a>
             </div>
@@ -33,7 +33,7 @@ const Header = () => {
                 <img
                     className="w-full h-auto object-cover rounded-xl shadow-lg"
                     src={assets.header_img}
-                    alt="Doctor Appointment"
+                    alt="Online Doctor Consultation"
                 />
             </div>
         </div>

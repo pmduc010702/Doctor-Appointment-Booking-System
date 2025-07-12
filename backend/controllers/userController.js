@@ -68,10 +68,6 @@ const loginUser = async (req, res) => {
         const { email, password } = req.body
         const user = await userModel.findOne({ email })
 
-        // const user = await userModel.findOne({
-        //     $or: [{ email: email }, { phone: email }]
-        // })
-
         if (!user) {
             return res.json({ success: false, message: 'User does not Exist' })
         }
@@ -245,7 +241,7 @@ export const confirmPayment = async (req, res) => {
 
         const updated = await appointmentModel.findByIdAndUpdate(
             appointmentId,
-            { payment: true },
+            { payment: true, isCompleted: true },
             { new: true }
         );
 

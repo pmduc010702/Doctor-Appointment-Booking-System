@@ -7,19 +7,19 @@ const Footer = () => {
             <div className="grid gap-10 md:gap-20 md:grid-cols-3 text-sm">
                 {/* Left Column */}
                 <div>
-                    <img className="mb-4 w-36" src={assets.logo} alt="Logo" />
+                    <img className="mb-4 w-36" src={assets.logo} alt="HealthHub Logo" />
                     <p className="leading-relaxed text-gray-600">
-                        NIMHANS is world-renowned as a centre for mental health, neurosciences and allied fields. Our mission is to lead innovation and care through excellence in translational research and clinical service.
+                        HealthHub is your trusted platform to connect with certified doctors and book appointments online with ease and convenience. We’re committed to improving access to quality healthcare for everyone.
                     </p>
                 </div>
 
                 {/* Center Column */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-4 text-gray-900">Company</h3>
+                    <h3 className="text-lg font-semibold mb-4 text-gray-900">Quick Links</h3>
                     <ul className="flex flex-col gap-2 text-gray-600">
                         <li className="hover:text-primary cursor-pointer">Home</li>
                         <li className="hover:text-primary cursor-pointer">About Us</li>
-                        <li className="hover:text-primary cursor-pointer">Contact Us</li>
+                        <li className="hover:text-primary cursor-pointer">Contact</li>
                         <li className="hover:text-primary cursor-pointer">Privacy Policy</li>
                     </ul>
                 </div>
@@ -28,15 +28,15 @@ const Footer = () => {
                 <div>
                     <h3 className="text-lg font-semibold mb-4 text-gray-900">Get in Touch</h3>
                     <ul className="flex flex-col gap-2 text-gray-600">
-                        <li>📞 080 26995530</li>
-                        <li>📧 ms@nimhans.ac.in</li>
+                        <li>📞 (+84) 90 123 4567</li>
+                        <li>📧 pmduc@gmail.com</li>
                     </ul>
                 </div>
             </div>
 
             {/* Bottom Line */}
             <div className="mt-12 border-t pt-6 text-center text-xs text-gray-500">
-                © 2024 NIMHANS. All rights reserved.
+                © {new Date().getFullYear()} HealthHub. All rights reserved.
             </div>
         </footer>
     )
